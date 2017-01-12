@@ -1,0 +1,45 @@
+{
+  "name": "ac-fetch-script",
+  "version": "1.0.0",
+  "description": "Fetch script via an API compatible with HTML 5 Fetch API",
+  "main": "build/ac-fetch-script.js",
+  "scripts": {
+    "build": "rollup -c -o build/fetch-script.js",
+    "clean": "rm -rf build",
+    "lint": "eslint src/ test/"
+  },
+  "keywords": [
+    "fetch",
+    "script",
+    "github fetch",
+    "ajax"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "rollup": "^0.41.1",
+    "rollup-plugin-babel": "^2.7.1",
+    "webpack": "1.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artur-ciocanu/ac-fetch-script.git"
+  },
+  "author": "Artur Ciocanu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artur-ciocanu/ac-fetch-script/issues"
+  },
+  "homepage": "https://github.com/artur-ciocanu/ac-fetch-script#readme"
+}

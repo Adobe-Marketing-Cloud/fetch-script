@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fetch JSONP example</title>
+  <script src="../build/fetch-script.js"></script>
+</head>
+<body>
+  <script>
+    fetchScript('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js', {timeout: 3000})
+    .then(function(response) {
+      document.body.innerHTML = 'jQuery version: ' + $.fn.jquery;
+    })
+    .catch(function(ex) {
+      document.body.innerHTML = 'failed: ' + ex;
+    });
+  </script>
+</body>
+</html>
