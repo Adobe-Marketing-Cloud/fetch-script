@@ -18,8 +18,8 @@ function createScript(url, id) {
   return script;
 }
 
-function removeScript(scriptId) {
-  var script = document.getElementById(scriptId);
+function removeScript(id) {
+  var script = document.getElementById(id);
   var parent = script.parentNode;
 
   try {
@@ -36,17 +36,15 @@ function appendScript(script) {
   firstScript.parentNode.insertBefore(script, firstScript);
 }
 
-function fetchScript(url) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var timeout = options.timeout || 5000;
-
-  return new Promise(function (resolve, reject) {
+function fetchScriptInternal(url, options, promise) {
+  return new promise(function (resolve, reject) {
+    var timeout = options.timeout || 5000;
     var scriptId = getScriptId();
     var script = createScript(url, scriptId);
 
     var timeoutId = setTimeout(function () {
       reject(new Error('Script request to ' + url + ' timed out'));
+
       removeScript(scriptId);
     }, timeout);
 
@@ -56,18 +54,30 @@ function fetchScript(url) {
 
     script.addEventListener('load', function (e) {
       resolve({ ok: true });
+
       disableTimeout(timeoutId);
       removeScript(scriptId);
     });
 
     script.addEventListener('error', function (e) {
       reject(new Error('Script request to ' + url + ' failed ' + e));
+
       disableTimeout(timeoutId);
       removeScript(scriptId);
     });
 
     appendScript(script);
   });
+}
+
+function fetchScript(settings) {
+  return function (url) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var promise = settings && settings.Promise || self.Promise;
+
+    return fetchScriptInternal(url, options, promise);
+  };
 }
 
 return fetchScript;

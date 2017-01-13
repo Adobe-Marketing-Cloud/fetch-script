@@ -30,8 +30,8 @@ function appendScript(script) {
   firstScript.parentNode.insertBefore(script, firstScript);
 }
 
-function fetchScript(url, options = {}) {
-  return new Promise((resolve, reject) => {
+function fetchScriptInternal(url, options, promise) {
+  return new promise((resolve, reject) => {
     const timeout = options.timeout || 5000;
     const scriptId = getScriptId();
     const script = createScript(url, scriptId);
@@ -60,6 +60,14 @@ function fetchScript(url, options = {}) {
 
     appendScript(script);
   });
+}
+
+function fetchScript(settings) {
+  return (url, options = {}) => {
+    const promise = settings && settings.Promise || self.Promise;
+
+    return fetchScriptInternal(url, options, promise);
+  };
 }
 
 export default fetchScript;
