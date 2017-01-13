@@ -12,14 +12,6 @@ You can install with `npm`.
 npm install ac-fetch-script
 ```
 
-## Promise Polyfill for IE
-
-IE9/10/11 does not support [ES6 Promise](https://tc39.github.io/ecma262/#sec-promise-constructor), run this to polyfill the global environment at the beginning of your application.
-
-```js
-require('es6-promise').polyfill();
-```
-
 ## Usage
 
 The `fetchScript` function supports ONLY GET HTTP method.
@@ -27,7 +19,9 @@ The `fetchScript` function supports ONLY GET HTTP method.
 ### Fetch script in simple way
 
 ```javascript
-fetchScript('/some-javascript-file.js')
+var fetch = fetchScript();
+
+fetch('/some-javascript-file.js')
 .then(function(response) {
   console.log('script loaded successfully');
 })
@@ -39,7 +33,23 @@ fetchScript('/some-javascript-file.js')
 ### Set script request timeout, default is 5000ms
 
 ```javascript
-fetchScript('/some-javascript-file.js', {timeout: 3000})
+var fetch = fetchScript();
+
+fetch('/some-javascript-file.js', {timeout: 3000})
+.then(function(response) {
+  console.log('script loaded successfully');
+})
+.catch(function(ex) {
+  console.log('failed', ex);
+});
+```
+
+### Passing Promise implementation, default is window.Promise, make sure you pass custom implementation if the browser doesn't support ES6 Promise.
+
+```javascript
+var fetch = fetchScript({Promise: CustomPromise});
+
+fetch('/some-javascript-file.js', {timeout: 3000})
 .then(function(response) {
   console.log('script loaded successfully');
 })
