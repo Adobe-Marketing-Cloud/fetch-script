@@ -12,8 +12,8 @@ function createScript(url, id) {
   return script;
 }
 
-function removeScript(scriptId) {
-  const script = document.getElementById(scriptId);
+function removeScript(id) {
+  const script = document.getElementById(id);
   const parent = script.parentNode;
 
   try {
@@ -28,17 +28,17 @@ function removeScript(scriptId) {
 function appendScript(script) {
   const firstScript = document.getElementsByTagName('script')[0];
   firstScript.parentNode.insertBefore(script, firstScript);
-} 
+}
 
 function fetchScript(url, options = {}) {
-  const timeout = options.timeout || 5000;
-  
   return new Promise((resolve, reject) => {
+    const timeout = options.timeout || 5000;
     const scriptId = getScriptId();
     const script = createScript(url, scriptId);
     
     const timeoutId = setTimeout(() => {
       reject(new Error(`Script request to ${url} timed out`));
+
       removeScript(scriptId);
     }, timeout);
 
@@ -46,12 +46,14 @@ function fetchScript(url, options = {}) {
     
     script.addEventListener('load', function(e) {
       resolve({ok: true});      
+      
       disableTimeout(timeoutId);
       removeScript(scriptId);
     });
 
     script.addEventListener('error', function(e) {
       reject(new Error(`Script request to ${url} failed ${e}`));
+      
       disableTimeout(timeoutId);
       removeScript(scriptId);
     });
