@@ -36,26 +36,27 @@ function fetchScript(url, options = {}) {
   return new Promise((resolve, reject) => {
     const scriptId = getScriptId();
     const script = createScript(url, scriptId);
-    const disableTimeout = () => { if (timeoutId) clearTimeout(timeoutId) };
+    
+    const timeoutId = setTimeout(() => {
+      reject(new Error(`Script request to ${url} timed out`));
+      removeScript(scriptId);
+    }, timeout);
+
+    const disableTimeout = timeoutId => clearTimeout(timeoutId);
     
     script.addEventListener('load', function(e) {
       resolve({ok: true});      
-      disableTimeout();
+      disableTimeout(timeoutId);
       removeScript(scriptId);
     });
 
     script.addEventListener('error', function(e) {
       reject(new Error(`Script request to ${url} failed ${e}`));
-      disableTimeout();
+      disableTimeout(timeoutId);
       removeScript(scriptId);
     });
 
     appendScript(script);
-
-    const timeoutId = setTimeout(() => {
-      reject(new Error(`Script request to ${url} timed out`));
-      removeScript(scriptId);
-    }, timeout);
   });
 }
 

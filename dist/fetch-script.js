@@ -44,28 +44,29 @@ function fetchScript(url) {
   return new Promise(function (resolve, reject) {
     var scriptId = getScriptId();
     var script = createScript(url, scriptId);
-    var disableTimeout = function disableTimeout() {
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-
-    script.addEventListener('load', function (e) {
-      resolve({ ok: true });
-      disableTimeout();
-      removeScript(scriptId);
-    });
-
-    script.addEventListener('error', function (e) {
-      reject(new Error('Script request to ' + url + ' failed ' + e));
-      disableTimeout();
-      removeScript(scriptId);
-    });
-
-    appendScript(script);
 
     var timeoutId = setTimeout(function () {
       reject(new Error('Script request to ' + url + ' timed out'));
       removeScript(scriptId);
     }, timeout);
+
+    var disableTimeout = function disableTimeout(timeoutId) {
+      return clearTimeout(timeoutId);
+    };
+
+    script.addEventListener('load', function (e) {
+      resolve({ ok: true });
+      disableTimeout(timeoutId);
+      removeScript(scriptId);
+    });
+
+    script.addEventListener('error', function (e) {
+      reject(new Error('Script request to ' + url + ' failed ' + e));
+      disableTimeout(timeoutId);
+      removeScript(scriptId);
+    });
+
+    appendScript(script);
   });
 }
 

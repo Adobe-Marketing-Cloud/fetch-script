@@ -2,9 +2,9 @@
   "name": "ac-fetch-script",
   "version": "1.0.0",
   "description": "Fetch script via an API compatible with HTML 5 Fetch API",
-  "main": "build/ac-fetch-script.js",
+  "main": "dist/fetch-script.js",
   "scripts": {
-    "build": "rollup -c -o build/fetch-script.js",
+    "build": "rollup -c -o dist/fetch-script.js",
     "clean": "rm -rf build",
     "lint": "eslint src/ test/"
   },
