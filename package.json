@@ -5,7 +5,7 @@
   "main": "dist/fetch-script.js",
   "scripts": {
     "build": "rollup -c -o dist/fetch-script.js",
-    "clean": "rm -rf build",
+    "clean": "rm -rf dist",
     "lint": "eslint src/ test/"
   },
   "keywords": [

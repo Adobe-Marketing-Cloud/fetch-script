@@ -28,31 +28,29 @@ The `fetchScript` function supports ONLY GET HTTP method.
 
 ```javascript
 fetchScript('/some-javascript-file.js')
-  .then(function(response) {
-    console.log('script loaded successfully');
-  })
-  .catch(function(ex) {
-    console.log('failed', ex);
-  });
+.then(function(response) {
+  console.log('script loaded successfully');
+})
+.catch(function(ex) {
+  console.log('failed', ex);
+});
 ```
 
 ### Set script request timeout, default is 5000ms
 
 ```javascript
-fetchScript('/some-javascript-file.js', {
-    timeout: 3000
-  })
-  .then(function(response) {
-    console.log('script loaded successfully');
-  })
-  .catch(function(ex) {
-    console.log('failed', ex);
-  });
+fetchScript('/some-javascript-file.js', {timeout: 3000})
+.then(function(response) {
+  console.log('script loaded successfully');
+})
+.catch(function(ex) {
+  console.log('failed', ex);
+});
 ```
 
 ### Caveats
 
-Since we can't retrieve loaded script content, the response will contain just the ```ok``` property set to true. This is to be consistent with Fetch API. You can safely ignore response parameter.
+Since we can't retrieve loaded script content, the response will contain just the ```ok``` property set to ```true```. This is to be consistent with Fetch API. You can safely ignore response parameter.
 
 ## Browser Support
 
