@@ -13,7 +13,7 @@ module.exports = function (config) {
     },
     
     files: [
-      'fixtures/existing.js',
+      {pattern: 'fixtures/existing.js', included: false},
       'tests.webpack.js'
     ],
     
