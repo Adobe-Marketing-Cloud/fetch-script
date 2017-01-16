@@ -30,7 +30,7 @@ fetch('/some-javascript-file.js')
 });
 ```
 
-### Set script request timeout, default is 5000ms
+### Set script request timeout, default is 5000ms.
 
 ```javascript
 var fetch = fetchScript();
@@ -43,6 +43,8 @@ fetch('/some-javascript-file.js', {timeout: 3000})
   console.log('failed', ex);
 });
 ```
+
+NOTE: timeout option is not supported in the native Fetch API.
 
 ### Passing Promise implementation, default is window.Promise, make sure you pass custom implementation if the browser doesn't support ES6 Promise.
 

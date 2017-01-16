@@ -17,9 +17,7 @@ function removeScript(id) {
   const parent = script.parentNode;
 
   try {
-    if (parent) {
-      parent.removeChild(script);  
-    }
+    parent && parent.removeChild(script);
   } catch (e) {
     // ignore
   }

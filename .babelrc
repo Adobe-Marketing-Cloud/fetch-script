@@ -1,13 +1,6 @@
 {
-  "presets": [
-    [
-      "es2015",
-      {
-        "modules": false
-      }
-    ]
-  ],
+  "presets": ["es2015"],
   "plugins": [
-    "external-helpers"
+    "add-module-exports"
   ]
 }

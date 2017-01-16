@@ -1,7 +1,8 @@
-.DS_Store
 *.log
-node_modules
-src
-test
-examples
-coverage
+/.*/
+/build/
+/.eslint*
+/.gitignore
+/.npmignore
+/.travis.yml
+/webpack.*
