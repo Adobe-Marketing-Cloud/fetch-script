@@ -1,5 +1,5 @@
 {
-  "name": "ac-fetch-script",
+  "name": "fetch-script",
   "version": "1.0.0",
   "description": "Fetch script via an API compatible with HTML 5 Fetch API",
   "main": "dist/fetch-script.min.js",
@@ -7,12 +7,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/artur-ciocanu/ac-fetch-script.git"
+    "url": "git+https://github.com/Adobe-Marketing-Cloud/fetch-script.git"
   },
   "bugs": {
-    "url": "https://github.com/artur-ciocanu/ac-fetch-script/issues"
+    "url": "https://github.com/Adobe-Marketing-Cloud/fetch-script/issues"
   },
-  "homepage": "https://github.com/artur-ciocanu/ac-fetch-script#readme",
+  "homepage": "https://github.com/Adobe-Marketing-Cloud/fetch-script#readme",
   "scripts": {
     "build": "npm run clean && npm run build:dev && npm run build:prd",
     "build:dev": "webpack src/fetch-script.js dist/fetch-script.js --config tools/webpack.config.dev.js",
