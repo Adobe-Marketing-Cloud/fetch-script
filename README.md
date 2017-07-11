@@ -9,7 +9,7 @@ If you need a `fetch` polyfill for old browsers, try [github/fetch](http://githu
 You can install with `npm`.
 
 ```
-npm install ac-fetch-script
+npm install fetch-script
 ```
 
 ## Usage
