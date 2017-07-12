@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Fetch script via an API compatible with HTML 5 Fetch API",
   "main": "lib/index.min.js",
-  "author": "Artur Ciocanu",
+  "author": {
+    "name": "Adobe Systems",
+    "email": "ciocanu@adobe.com"
+  },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
