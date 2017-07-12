@@ -1,0 +1,46 @@
+{
+  "name": "fetch-script",
+  "version": "1.0.0",
+  "description": "Fetch script via an API compatible with HTML 5 Fetch API",
+  "main": "lib/index.min.js",
+  "author": "Artur Ciocanu",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adobe-Marketing-Cloud/fetch-script.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Adobe-Marketing-Cloud/fetch-script/issues"
+  },
+  "homepage": "https://github.com/Adobe-Marketing-Cloud/fetch-script#readme",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack --env development",
+    "build:prod": "webpack -p --env production",
+    "test": "karma start",
+    "coverage": "karma start --single-run --no-auto-watch --coverage=true || echo done"
+  },
+  "keywords": [
+    "fetch",
+    "script",
+    "github fetch",
+    "ajax"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.0",
+    "istanbul-instrumenter-loader": "^2.0.0",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.2",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}
