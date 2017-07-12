@@ -1,5 +1,5 @@
 Script loading is NOT supported in standard Fetch API, https://fetch.spec.whatwg.org.
-fetch-script provides you the API to fetch script files that is similar to native Fetch API.
+`fetch-script` provides you the API to fetch script files that is similar to native Fetch API.
 This library has been inspired by [fetch-jsonp](https://github.com/camsong/fetch-jsonp.git)
 
 ## Installation
